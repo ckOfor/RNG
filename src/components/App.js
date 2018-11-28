@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 
 // third party
-import { Navbar, NavItem, Button, Icon, Row, Input, Dropdown, Modal } from 'react-materialize'
+import { Navbar, NavItem, Button, Row, Input, Dropdown, Modal } from 'react-materialize'
 
 // component
 import TableComponent from '../components/table';
@@ -129,7 +129,6 @@ class App extends Component {
               onClick={() => this.onGenerateButtonClick(this.state.userRange)}
               waves='light'>
               GENERATE
-              <Icon right>insert_chart</Icon>
             </Button>
             <Dropdown trigger={
               <Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>
@@ -152,7 +151,6 @@ class App extends Component {
               onClick={() => window.Materialize.toast('Coming soon!', 10000)}
               waves='light'>
               Download
-              <Icon right>save_alt</Icon>
             </Button>
           </Row>
           

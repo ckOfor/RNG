@@ -2,15 +2,18 @@
 import React from 'react';
 
 // third party
-import { mount } from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import { spy } from 'sinon';
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-Enzyme.configure({ adapter: new Adapter() })
 
 // component
 import App from './components/App';
+
+// enzyme
+Enzyme.configure({ adapter: new Adapter() })
+
 
 
 
