@@ -23,5 +23,6 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
     wrapper.find('Navbar').simulate('click');
     wrapper.find('NavItem').simulate('click');
+    wrapper.find('Button').simulate('click');
   });
 });
