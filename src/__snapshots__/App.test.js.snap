@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<div
+  className="App"
+>
+  <Navbar
+    brand="RNG"
+    href="/"
+    options={Object {}}
+    right={true}
+  >
+    <NavItem>
+      Total : 
+      0
+    </NavItem>
+  </Navbar>
+  <TableComponent
+    list={Array []}
+  />
+  <div
+    style={
+      Object {
+        "marginLeft": 300,
+        "marginTop": 50,
+      }
+    }
+  >
+    <Row>
+      <Input
+        checked={false}
+        label="Enter Range"
+        onChange={[Function]}
+        s={2}
+        type="text"
+        value=""
+      />
+      <Button
+        node="button"
+        onClick={[Function]}
+        s={6}
+        style={
+          Object {
+            "marginLeft": 40,
+            "marginTop": 20,
+          }
+        }
+        waves="light"
+      >
+        GENERATE
+        <Icon
+          right={true}
+        >
+          insert_chart
+        </Icon>
+      </Button>
+      <Dropdown
+        trigger={
+          <Button
+            node="button"
+            style={
+              Object {
+                "marginLeft": 40,
+                "marginTop": 20,
+              }
+            }
+          >
+            Filter by:
+          </Button>
+        }
+      >
+        <NavItem
+          onClick={[Function]}
+        >
+          Ascending
+        </NavItem>
+        <NavItem
+          onClick={[Function]}
+        >
+          Descending
+        </NavItem>
+        <NavItem
+          divider={true}
+        />
+        <Modal
+          actions={
+            Array [
+              <Button
+                flat={true}
+                modal="close"
+                node="button"
+                waves="light"
+              >
+                Close
+              </Button>,
+            ]
+          }
+          bottomSheet={false}
+          fixedFooter={false}
+          header="Minimum: "
+          modalOptions={Object {}}
+          trigger={
+            <NavItem>
+              Min
+            </NavItem>
+          }
+        />
+        <Modal
+          actions={
+            Array [
+              <Button
+                flat={true}
+                modal="close"
+                node="button"
+                waves="light"
+              >
+                Close
+              </Button>,
+            ]
+          }
+          bottomSheet={false}
+          fixedFooter={false}
+          header="Maximum: "
+          modalOptions={Object {}}
+          trigger={
+            <NavItem>
+              Max
+            </NavItem>
+          }
+        />
+      </Dropdown>
+      <Button
+        node="button"
+        onClick={[Function]}
+        s={6}
+        style={
+          Object {
+            "marginLeft": 40,
+            "marginTop": 20,
+          }
+        }
+        waves="light"
+      >
+        Download
+        <Icon
+          right={true}
+        >
+          save_alt
+        </Icon>
+      </Button>
+    </Row>
+  </div>
+</div>
+`;
+
+exports[`<App /> renders the Home app <App /> components 1`] = `
+<div
+  className="App"
+>
+  <Navbar
+    brand="RNG"
+    href="/"
+    options={Object {}}
+    right={true}
+  >
+    <NavItem>
+      Total : 
+      0
+    </NavItem>
+  </Navbar>
+  <TableComponent
+    list={Array []}
+  />
+  <div
+    style={
+      Object {
+        "marginLeft": 300,
+        "marginTop": 50,
+      }
+    }
+  >
+    <Row>
+      <Input
+        checked={false}
+        label="Enter Range"
+        onChange={[Function]}
+        s={2}
+        type="text"
+        value=""
+      />
+      <Button
+        node="button"
+        onClick={[Function]}
+        s={6}
+        style={
+          Object {
+            "marginLeft": 40,
+            "marginTop": 20,
+          }
+        }
+        waves="light"
+      >
+        GENERATE
+        <Icon
+          right={true}
+        >
+          insert_chart
+        </Icon>
+      </Button>
+      <Dropdown
+        trigger={
+          <Button
+            node="button"
+            style={
+              Object {
+                "marginLeft": 40,
+                "marginTop": 20,
+              }
+            }
+          >
+            Filter by:
+          </Button>
+        }
+      >
+        <NavItem
+          onClick={[Function]}
+        >
+          Ascending
+        </NavItem>
+        <NavItem
+          onClick={[Function]}
+        >
+          Descending
+        </NavItem>
+        <NavItem
+          divider={true}
+        />
+        <Modal
+          actions={
+            Array [
+              <Button
+                flat={true}
+                modal="close"
+                node="button"
+                waves="light"
+              >
+                Close
+              </Button>,
+            ]
+          }
+          bottomSheet={false}
+          fixedFooter={false}
+          header="Minimum: "
+          modalOptions={Object {}}
+          trigger={
+            <NavItem>
+              Min
+            </NavItem>
+          }
+        />
+        <Modal
+          actions={
+            Array [
+              <Button
+                flat={true}
+                modal="close"
+                node="button"
+                waves="light"
+              >
+                Close
+              </Button>,
+            ]
+          }
+          bottomSheet={false}
+          fixedFooter={false}
+          header="Maximum: "
+          modalOptions={Object {}}
+          trigger={
+            <NavItem>
+              Max
+            </NavItem>
+          }
+        />
+      </Dropdown>
+      <Button
+        node="button"
+        onClick={[Function]}
+        s={6}
+        style={
+          Object {
+            "marginLeft": 40,
+            "marginTop": 20,
+          }
+        }
+        waves="light"
+      >
+        Download
+        <Icon
+          right={true}
+        >
+          save_alt
+        </Icon>
+      </Button>
+    </Row>
+  </div>
+</div>
+`;

@@ -2,27 +2,47 @@
 import React from 'react';
 
 // third party
-import ReactDOM from 'react-dom';
+import { mount } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import { spy } from 'sinon';
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { shallow } from 'enzyme';
+Enzyme.configure({ adapter: new Adapter() })
 
 // component
 import App from './components/App';
 
-Enzyme.configure({ adapter: new Adapter() })
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
 
-describe('<App />', () => {
-  it('renders the Home app <App /> components', () => {
-    const wrapper = shallow(<App />);
-    wrapper.find('Navbar').simulate('click');
-    wrapper.find('NavItem').simulate('click');
-    wrapper.find('Button').simulate('click');
-  });
-});
+// import ReactDOM from 'react-dom';
+
+// import { shallow, mount } from 'enzyme';
+// import toJson from 'enzyme-to-json';
+//
+//
+
+//
+// describe('<App />', () => {
+//   it('renders without crashing', () => {
+//     const div = document.createElement('div');
+//     ReactDOM.render(<App />, div);
+//     ReactDOM.unmountComponentAtNode(div);
+//   });
+//
+//
+//
+//   it('renders the Home app <App /> components', () => {
+//     const wrapper = mount(<App />);
+//     const rendering = toJson(wrapper);
+//     expect(rendering).toMatchSnapshot();
+//     wrapper.find('Navbar').simulate('click');
+//   });
+//
+//   it('renders the generate button <App /> components', () => {
+//     const wrapper = mount(<App />);
+//     expect(wrapper.find('Button').length).toBe(2);
+//   });
+// });
+//
+//
+

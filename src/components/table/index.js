@@ -5,98 +5,45 @@ import React, { Component } from 'react';
 import { Table } from 'react-materialize'
 
 class TableComponent extends Component {
+  state={
+    tableList: this.props.list.length > 0 ? this.props.list : []
+  }
+  
+  componentDidMount() {
+    this.setState({ tableList: this.props.list })
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    this.setState({ tableList: nextProps.list })
+  }
+  
   render() {
+    let { tableList } = this.state
     return (
       <div style={{ marginLeft: 300, height: 500, width: 1000, marginTop: 50, display: 'block',
         overflow:'auto' }}>
-        <Table>
+        <Table style={{  }}>
           <thead>
           <tr>
-            <th data-field="id">Name</th>
-            <th data-field="name">Item Name</th>
-            <th data-field="price">Item Price</th>
+            <th data-field="id">S/N</th>
+            <th data-field="name">Unique ID</th>
+            <th data-field="price">Phone Numbers</th>
           </tr>
           </thead>
-    
-          <tbody style={{
-          }}>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr><tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
+          <tbody>
+          {
+            (
+              Object.keys(tableList).map((row, index) => {
+                return (
+                  <tr>
+                    <td>{index + 1}</td>
+                    <td>{tableList[row].id}</td>
+                    <td>{tableList[row].value}</td>
+                  </tr>
+                )
+              })
+            )
+          }
           </tbody>
         </Table>
       </div>
