@@ -15,7 +15,8 @@ import logo from '../logo.svg';
 import '../App.css';
 import '../App.css';
 
-const fs = require('browserify-fs');
+// const fs = require('browserify-fs');
+import fs from 'fs';
 
 class App extends Component {
   state={
