@@ -35,24 +35,11 @@ class App extends Component {
   
   componentDidMount(){
     this.mounted = true;
-
-    if(this.mounted) {
-      this.setState({ mounted: true }, () =>
-        this.setComponentState
-      )
-
-    }
   }
   
   componentWillMount() {
-    fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err ? this.setComponentState(JSON.parse(generatedNumbers) || []) : null); // eslint-disable-line
-  }
-  
-  setComponentState = (generatedNumbers) => {
-    fs.readFile('../../numbers.txt', 'utf-8', (err, generatedNumbers) =>
-      this.setState({  generatedNumbers: JSON.parse(generatedNumbers) },
-        () => this.returnMaxAndMin(generatedNumbers))
-    )
+    fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err
+      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }) : null); // eslint-disable-line
   }
   
   componentWillUnmount(){
@@ -120,6 +107,14 @@ class App extends Component {
     this.setState({ minValue, maxValue })
   }
   
+  onChange = (event) => {
+    // userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })
+    event.preventDefault();
+    const { value } = event.target;
+  
+    this.setState({ userRange: value.replace(/\D/g, '') });
+  }
+  
   render() {
     console.log(this.state)
     let { generatedNumbers } = this.state
@@ -183,8 +178,9 @@ class App extends Component {
             <Input
               className="range"
               s={2}
-              label="Enter Range"
-              onChange={userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })}
+              label="Enter Range 1 <= 5000"
+              onChange={this.onChange}
+              // onChange={userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })}
               value={this.state.userRange}
             />
             <Button
