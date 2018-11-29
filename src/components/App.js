@@ -146,25 +146,25 @@ class App extends Component {
         </div>
         <div style={{ marginLeft: 300, marginTop: 50 }}>
           <Row>
-            <Dropdown
-              onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
-              trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>
-              <NavItem
-                className="asc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>
-              <NavItem
-                className="dsc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>
-              <NavItem divider />
-              <Modal
-                header={`Minimum: ${this.state.minValue}`}
-                trigger={<NavItem className="min">Min</NavItem>}>
-              </Modal>
-              <Modal
-                header={`Maximum: ${this.state.maxValue}`}
-                trigger={<NavItem className="max">Max</NavItem>}>
-              </Modal>
-            </Dropdown>
+            {/*<Dropdown*/}
+              {/*onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}*/}
+              {/*trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>*/}
+              {/*<NavItem*/}
+                {/*className="asc"*/}
+                {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>*/}
+              {/*<NavItem*/}
+                {/*className="dsc"*/}
+                {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>*/}
+              {/*<NavItem divider />*/}
+              {/*<Modal*/}
+                {/*header={`Minimum: ${this.state.minValue}`}*/}
+                {/*trigger={<NavItem className="min">Min</NavItem>}>*/}
+              {/*</Modal>*/}
+              {/*<Modal*/}
+                {/*header={`Maximum: ${this.state.maxValue}`}*/}
+                {/*trigger={<NavItem className="max">Max</NavItem>}>*/}
+              {/*</Modal>*/}
+            {/*</Dropdown>*/}
             
             <Input
               className="range"
@@ -180,15 +180,6 @@ class App extends Component {
               onClick={() => this.onGenerateButtonClick(this.state.userRange)}
               waves='light'>
               GENERATE
-            </Button>
-            
-            <Button
-              className="filter"
-              style={{ marginTop: 20, marginLeft: 40 }}
-              s={6}
-              // onClick={() => this.onGenerateButtonClick(this.state.userRange)}
-              waves='light'>
-              filter
             </Button>
           </Row>
         </div>
