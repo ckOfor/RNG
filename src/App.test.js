@@ -44,12 +44,12 @@ describe('App', () => {
     wrapper.unmount();
   });
   
-  it('should ensure descending order is clicked', () => {
-    const wrapper = mount(<App />);
-    const action = wrapper.find('NavItem.dsc').simulate('click');
-    expect(action).toBeInstanceOf(Object);
-    wrapper.unmount();
-  });
+  // it('should ensure descending order is clicked', () => {
+  //   const wrapper = mount(<App />);
+  //   const action = wrapper.find('NavItem.dsc').simulate('click');
+  //   expect(action).toBeInstanceOf(Object);
+  //   wrapper.unmount();
+  // });
   
   it('should ensure dropdown is clicked', () => {
     const wrapper = mount(<App />);

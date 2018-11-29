@@ -29,18 +29,9 @@ class App extends Component {
     mounted: false
   }
   
-  componentDidMount(){
-    this.mounted = true;
-  }
-  
   componentWillMount() {
     fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err
       ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }) : null)
-      // ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }, () => this.returnMaxAndMin(JSON.parse(generatedNumbers))) : null); // eslint-disable-line
-  }
-  
-  componentWillUnmount(){
-    this.mounted = false;
   }
   
   onGenerateButtonClick = (userRange) => {
