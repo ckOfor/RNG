@@ -35,7 +35,8 @@ class App extends Component {
   
   componentWillMount() {
     fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err
-      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }, () => this.returnMaxAndMin(JSON.parse(generatedNumbers))) : null); // eslint-disable-line
+      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }) : null)
+      // ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }, () => this.returnMaxAndMin(JSON.parse(generatedNumbers))) : null); // eslint-disable-line
   }
   
   componentWillUnmount(){
@@ -45,7 +46,7 @@ class App extends Component {
   onGenerateButtonClick = (userRange) => {
     return userRange > 0 && userRange <= 5000 ?
       this.phoneNumberGenerator(userRange)
-      : window.Materialize.toast('I am a toast!', 10000)
+      : window.Materialize.toast('You can only enter numbers between 0 - 5001', 10000)
   }
   
   phoneNumberGenerator = (userRange) => {
@@ -151,6 +152,7 @@ class App extends Component {
           <Row>
             <Dropdown
               className="dropdown"
+              onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
               // onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
               trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>
               <NavItem
