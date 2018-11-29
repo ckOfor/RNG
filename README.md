@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/ckOfor/RNG.svg?branch=dev)](https://travis-ci.org/ckOfor/RNG)
 [![Coverage Status](https://coveralls.io/repos/github/ckOfor/RNG/badge.svg?branch=dev)](https://coveralls.io/github/ckOfor/RNG?branch=dev)
 
 
