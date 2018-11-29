@@ -35,16 +35,23 @@ class App extends Component {
   
   componentDidMount(){
     this.mounted = true;
-    
+
     if(this.mounted) {
-      this.setState({ mounted: true }, () => this.setComponentState)
+      this.setState({ mounted: true }, () =>
+        this.setComponentState
+      )
+
     }
   }
   
-  setComponentState = () => {
+  componentWillMount() {
+    fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err ? this.setComponentState(JSON.parse(generatedNumbers) || []) : null); // eslint-disable-line
+  }
+  
+  setComponentState = (generatedNumbers) => {
     fs.readFile('../../numbers.txt', 'utf-8', (err, generatedNumbers) =>
       this.setState({  generatedNumbers: JSON.parse(generatedNumbers) },
-        () => this.returnMaxAndMin(this.state.generatedNumbers))
+        () => this.returnMaxAndMin(generatedNumbers))
     )
   }
   
@@ -114,6 +121,7 @@ class App extends Component {
   }
   
   render() {
+    console.log(this.state)
     let { generatedNumbers } = this.state
     let num = [1,2,3,4,5]
     return (
