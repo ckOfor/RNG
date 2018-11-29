@@ -107,16 +107,7 @@ class App extends Component {
     this.setState({ minValue, maxValue })
   }
   
-  onChange = (event) => {
-    // userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })
-    event.preventDefault();
-    const { value } = event.target;
-  
-    this.setState({ userRange: value.replace(/\D/g, '') });
-  }
-  
   render() {
-    console.log(this.state)
     let { generatedNumbers } = this.state
     let num = [1,2,3,4,5]
     return (
@@ -179,8 +170,7 @@ class App extends Component {
               className="range"
               s={2}
               label="Enter Range 1 <= 5000"
-              onChange={this.onChange}
-              // onChange={userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })}
+              onChange={userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })}
               value={this.state.userRange}
             />
             <Button
