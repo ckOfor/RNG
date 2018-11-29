@@ -1,64 +1,115 @@
 // react
 import React from 'react';
 
-// third-party
-import ReactDOM from 'react-dom';
-import { expect } from 'chai';
-import { shallow, mount } from 'enzyme';
-import { spy } from 'sinon';
-import { render } from 'enzyme';
+// third-party libraries
+import { mount, shallow } from 'enzyme'
 import toJson from 'enzyme-to-json';
+import { spy } from 'sinon';
 
 // component
 import App from './components/App';
 
-describe('<App />', () => {
-  
-  it('renders without crashing', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<App />, div);
-    ReactDOM.unmountComponentAtNode(div);
-  });
-  
-  it('renders three <App /> components', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('div')).to.have.lengthOf(3);
-    
-  });
+const mock = require('mock-fs');
 
-  it('calls componentDidMount', () => {
-    spy(App.prototype, 'componentDidMount');
+describe('App', () => {
+  let wrapper;
+  
+  // beforeEach(() => {
+  //   wrapper = mount(<App />);
+  // });
+  //
+  // afterAll(() => {
+  //   mock.restore();
+  //   wrapper.unmount();
+  //   setTimeout(() => process.exit(), 10)
+  // });
+  
+  // afterAll(() => setTimeout(() => process.exit(), 10))
+
+  it('should call the onGenerateButtonClick method ', () => {
     const wrapper = mount(<App />);
-    expect(App.prototype.componentDidMount).to.have.property('callCount', 1);
-    App.prototype.componentDidMount.restore();
+    const onGenerateButtonClickSpy = spy(wrapper.instance(), 'onGenerateButtonClick');
+    wrapper.instance().onGenerateButtonClick(100);
+    expect(onGenerateButtonClickSpy.called).toEqual(true);
     wrapper.unmount();
   });
 
-  it('renders divs', () => {
-    const wrapper = render(<App />);
-    expect(wrapper.find('div')).to.have.lengthOf(6);
-    expect(wrapper.find('button')).to.have.lengthOf(2);
-    expect(wrapper.find('Input')).to.have.lengthOf(1);
-  });
-
-  it('renders the title', () => {
-    const wrapper = render(<App title="RNGTotal" />);
-    expect(wrapper.text()).to.contain('RNGTotal');
-  });
-  
-  it('allows us to set props', () => {
-    const wrapper = mount(<App bar="baz" />);
-    expect(wrapper.props().bar).to.equal('baz');
-    wrapper.setProps({ bar: 'foo' });
-    expect(wrapper.props().bar).to.equal('foo');
-    wrapper.unmount();
-  });
-  
-  it('calls componentDidMount', () => {
-    spy(App.prototype, 'componentDidMount');
+  it('should call the sortGeneratedNumbers method using asc ', () => {
     const wrapper = mount(<App />);
-    expect(App.prototype.componentDidMount).to.have.property('callCount', 1);
-    App.prototype.componentDidMount.restore();
+    const sortGeneratedNumbersSpy = spy(wrapper.instance(), 'sortGeneratedNumbers');
+    wrapper.instance().sortGeneratedNumbers(
+      [
+        { id: 1, value: "0911276029" },
+        { id: 2, value: "0780997650" },
+        { id: 3, value: "0141172042" },
+      ],
+      "asc"
+    );
+    expect(sortGeneratedNumbersSpy.called).toEqual(true);
     wrapper.unmount();
   });
+
+  it('should call the sortGeneratedNumbers method using dsc ', () => {
+    const wrapper = mount(<App />);
+    const sortGeneratedNumbersSpy = spy(wrapper.instance(), 'sortGeneratedNumbers');
+    wrapper.instance().sortGeneratedNumbers(
+      [
+        { id: 1, value: "0911276029" },
+        { id: 2, value: "0780997650" },
+        { id: 3, value: "0141172042" },
+      ],
+      "dsc"
+    );
+    expect(sortGeneratedNumbersSpy.called).toEqual(true);
+    wrapper.unmount()
+  });
+  
+  // it('renders without crashing', () => {
+  //   const rendering = toJson(wrapper);
+  //   expect(rendering).toMatchSnapshot();
+  //   wrapper.unmount();
+  // });
+  
+  // it('should call the onClick method to sort by Highest', () => {
+  //   const action = wrapper.find('NavItem.asc').simulate('click');
+  //   expect(action).toBeInstanceOf(Object);
+  //   wrapper.unmount();
+  // });
+  
+  //
+  // it('should call the onClick method to sort by Lowest', () => {
+  //   const action = wrapper.find('a.lowestSort').simulate('click');
+  //   expect(action).toBeInstanceOf(Object);
+  // });
+  //
+  // it('should call the onClick method to sort by IDs', () => {
+  //   const action = wrapper.find('a.uniqueSort').simulate('click');
+  //   expect(action).toBeInstanceOf(Object);
+  // });
+  //
+  // it('should call the onChange method for input validation', () => {
+  //   const onChangeSpy = spy(wrapper.instance(), 'onChange');
+  //   wrapper.instance().onChange(event);
+  //   wrapper.find('.number').first().simulate('change', event);
+  //   expect(onChangeSpy.called).toEqual(true);
+  //   expect(wrapper.state().numberToGenerate).toEqual(4000);
+  // });
+  //
+  // it('should call the onChange method', () => {
+  //   event = {
+  //     ...event,
+  //     target: { name: 'dummy' },
+  //   };
+  //   const onChangeSpy = spy(wrapper.instance(), 'onChange');
+  //   wrapper.instance().onChange(event);
+  //   wrapper.find('.number').first().simulate('change', event);
+  //   expect(onChangeSpy.called).toEqual(true);
+  //   expect(wrapper.state().numberToGenerate).toEqual(0);
+  // });
+  //
+  // it('should call the onSubmit method', () => {
+  //   const onSubmitSpy = spy(wrapper.instance(), 'onSubmit');
+  //   wrapper.instance().onChange(event);
+  //   wrapper.find('.btn__generate').first().simulate('submit', event);
+  // });
 });

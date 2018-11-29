@@ -2,28 +2,22 @@
 import React from 'react';
 
 // third-party
-import {  mount } from 'enzyme';
+import ReactDOM from 'react-dom';
+import { expect } from 'chai';
+import { shallow, mount } from 'enzyme';
 import { spy } from 'sinon';
+import { render } from 'enzyme';
+import toJson from 'enzyme-to-json';
 
 // component
 import App from './components/App';
 
-describe('Testing <App /> functions', () => {
+describe('<App />', () => {
   
-  it('should call the onGenerateButtonClick method', () => {
-    const wrapper = mount(<App />);
-    const action = wrapper.find('Button.generate').simulate('click');
-    console.log(action)
-    expect(action).toBeInstanceOf(Object);
-    wrapper.unmount();
-  });
-  
-  it('should call the onGenerateButtonClick method', () => {
-    const wrapper = mount(<App />);
-    const action = wrapper.find('Input.range').simulate('click');
-    console.log(action)
-    expect(action).toBeInstanceOf(Object);
-    wrapper.unmount();
+  it('renders without crashing', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<App />, div);
+    ReactDOM.unmountComponentAtNode(div);
   });
   
 });

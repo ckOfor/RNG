@@ -29,14 +29,31 @@ class App extends Component {
     userRange: '',
     minValue: '',
     maxValue: '',
-    selected: ''
+    selected: '',
+    mounted: false
   }
   
-  componentDidMount() {
+  componentDidMount(){
+    this.mounted = true;
+    
+    if(this.mounted) {
+      this.setState({ mounted: true }, () => this.setComponentState)
+    }
+  }
+  
+  setComponentState = () => {
     fs.readFile('../../numbers.txt', 'utf-8', (err, generatedNumbers) =>
-      this.setState({ generatedNumbers: JSON.parse(generatedNumbers) },
+      this.setState({  generatedNumbers: JSON.parse(generatedNumbers) },
         () => this.returnMaxAndMin(this.state.generatedNumbers))
     )
+  }
+  
+  componentWillUnmount(){
+    this.mounted = false;
+  }
+  
+  componentWillUnmount(){
+    this._mounted = false;
   }
   
   onGenerateButtonClick = (userRange) => {
@@ -53,16 +70,12 @@ class App extends Component {
     }
     
     this.setState({ generatedNumbers })
-    
-    this.writeToFile(generatedNumbers)
-    this.returnMaxAndMin(generatedNumbers)
-  }
-  
-  writeToFile = (generatedNumbers) => {
     const dataToWrite = JSON.stringify(generatedNumbers);
     fs.writeFile('../../numbers.txt', dataToWrite, (err) => {
       if (err) throw err;
     });
+    
+    this.returnMaxAndMin(generatedNumbers)
   }
   
   sortGeneratedNumbers = (generatedNumbers, choice) => {
@@ -146,21 +159,21 @@ class App extends Component {
         <div style={{ marginLeft: 300, marginTop: 50 }}>
           <Row>
             {/*<Dropdown trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>*/}
-              {/*<NavItem*/}
-                {/*className="asc"*/}
-                {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>*/}
-              {/*<NavItem*/}
-                {/*className="dsc"*/}
-                {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>*/}
-              {/*<NavItem divider />*/}
-              {/*<Modal*/}
-                {/*header={`Minimum: ${this.state.minValue}`}*/}
-                {/*trigger={<NavItem className="min">Min</NavItem>}>*/}
-              {/*</Modal>*/}
-              {/*<Modal*/}
-                {/*header={`Maximum: ${this.state.maxValue}`}*/}
-                {/*trigger={<NavItem className="max">Max</NavItem>}>*/}
-              {/*</Modal>*/}
+            {/*<NavItem*/}
+            {/*className="asc"*/}
+            {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>*/}
+            {/*<NavItem*/}
+            {/*className="dsc"*/}
+            {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>*/}
+            {/*<NavItem divider />*/}
+            {/*<Modal*/}
+            {/*header={`Minimum: ${this.state.minValue}`}*/}
+            {/*trigger={<NavItem className="min">Min</NavItem>}>*/}
+            {/*</Modal>*/}
+            {/*<Modal*/}
+            {/*header={`Maximum: ${this.state.maxValue}`}*/}
+            {/*trigger={<NavItem className="max">Max</NavItem>}>*/}
+            {/*</Modal>*/}
             {/*</Dropdown>*/}
             
             <Input
