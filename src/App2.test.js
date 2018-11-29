@@ -22,7 +22,12 @@ describe('<App />', () => {
   
   it('renders three <Foo /> components', () => {
     const wrapper = mount(<App />);
-    expect(wrapper.find('div')).to.have.lengthOf(7);
+    expect(wrapper.find('div')).to.have.lengthOf(15);
+  });
+  
+  it('renders three <Foo /> components', () => {
+    const wrapper = mount(<App />);
+    expect(wrapper.find('Dropdown')).to.have.lengthOf(1);
   });
   
   it('allows us to set props', () => {
@@ -40,8 +45,9 @@ describe('<App />', () => {
   });
   
   it('renders three `.foo-bar`s', () => {
-    const wrapper = render(<App />);
-    expect(wrapper.find('div')).to.have.lengthOf(6);
+    // const wrapper = render(<App />);
+    const wrapper = mount(<App bar="baz" />);
+    expect(wrapper.find('div')).to.have.lengthOf(15);
   });
   
 });

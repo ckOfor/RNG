@@ -13,14 +13,10 @@ import {
   Table,
 } from 'react-materialize'
 
-// image
-import logo from '../logo.svg';
-
-
 // styles
 import '../App.css';
 
-// const fs = require('browserify-fs');
+// fs
 import fs from 'fs';
 
 class App extends Component {
@@ -39,7 +35,7 @@ class App extends Component {
   
   componentWillMount() {
     fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err
-      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }) : null); // eslint-disable-line
+      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }, () => this.returnMaxAndMin(JSON.parse(generatedNumbers))) : null); // eslint-disable-line
   }
   
   componentWillUnmount(){
@@ -47,8 +43,9 @@ class App extends Component {
   }
   
   onGenerateButtonClick = (userRange) => {
-    return userRange > 0 && userRange <= 5000 &&
+    return userRange > 0 && userRange <= 5000 ?
       this.phoneNumberGenerator(userRange)
+      : window.Materialize.toast('I am a toast!', 10000)
   }
   
   phoneNumberGenerator = (userRange) => {
@@ -105,9 +102,15 @@ class App extends Component {
     this.setState({ minValue, maxValue })
   }
   
+  updateRange = (event) => {
+    event.preventDefault();
+    const { value } = event.target;
+  
+    this.setState({ userRange: value });
+  }
+  
   render() {
     let { generatedNumbers } = this.state
-    let num = [1,2,3,4,5]
     return (
       <div className="App">
         <Navbar brand='RNG' right>
@@ -146,32 +149,32 @@ class App extends Component {
         </div>
         <div style={{ marginLeft: 300, marginTop: 50 }}>
           <Row>
-            {/*<Dropdown*/}
-              {/*onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}*/}
-              {/*trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>*/}
-              {/*<NavItem*/}
-                {/*className="asc"*/}
-                {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>*/}
-              {/*<NavItem*/}
-                {/*className="dsc"*/}
-                {/*onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>*/}
-              {/*<NavItem divider />*/}
-              {/*<Modal*/}
-                {/*header={`Minimum: ${this.state.minValue}`}*/}
-                {/*trigger={<NavItem className="min">Min</NavItem>}>*/}
-              {/*</Modal>*/}
-              {/*<Modal*/}
-                {/*header={`Maximum: ${this.state.maxValue}`}*/}
-                {/*trigger={<NavItem className="max">Max</NavItem>}>*/}
-              {/*</Modal>*/}
-            {/*</Dropdown>*/}
+            <Dropdown
+              className="dropdown"
+              // onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
+              trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>
+              <NavItem
+                className="asc"
+                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>
+              <NavItem
+                className="dsc"
+                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>
+              <NavItem divider />
+              <Modal
+                header={`Minimum: ${this.state.minValue}`}
+                trigger={<NavItem className="min">Min</NavItem>}>
+              </Modal>
+              <Modal
+                header={`Maximum: ${this.state.maxValue}`}
+                trigger={<NavItem className="max">Max</NavItem>}>
+              </Modal>
+            </Dropdown>
             
             <Input
               className="range"
               s={2}
+              onChange={this.updateRange}
               label="Enter Range 1 <= 5000"
-              onChange={userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })}
-              value={this.state.userRange}
             />
             <Button
               className="generate"
