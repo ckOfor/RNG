@@ -8,10 +8,16 @@ import {
   Button,
   Row,
   Input,
-  Dropdown,
+  // Dropdown,
   Modal,
   Table,
 } from 'react-materialize'
+
+import $ from 'jquery';
+import { DropdownButton, MenuItem, Label } from 'react-bootstrap';
+
+// const bootstrap = require('bootstrap');
+// console.log(bootstrap)
 
 // image
 import logo from '../logo.svg';
@@ -22,6 +28,7 @@ import '../App.css';
 
 // const fs = require('browserify-fs');
 import fs from 'fs';
+
 
 class App extends Component {
   state={
@@ -39,7 +46,7 @@ class App extends Component {
   
   componentWillMount() {
     fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err
-      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }) : null); // eslint-disable-line
+      ? this.setState({ generatedNumbers: JSON.parse(generatedNumbers) }) : null); // eslint-disable-line
   }
   
   componentWillUnmount(){
@@ -63,7 +70,8 @@ class App extends Component {
     const dataToWrite = JSON.stringify(generatedNumbers);
     fs.writeFile('../../numbers.txt', dataToWrite, () => {});
     
-    this.returnMaxAndMin(generatedNumbers)
+    this.returnMaxAndMin(generatedNumbers, "min")
+    this.returnMaxAndMin(generatedNumbers, "max")
   }
   
   sortGeneratedNumbers = (generatedNumbers, choice) => {
@@ -86,23 +94,34 @@ class App extends Component {
     }
   }
   
-  returnMaxAndMin = (generatedNumbers, whatToReturn) => {
+  returnMaxAndMin = (generatedNumbers, whatIWant) => {
     let minValue = generatedNumbers[0].value;
     let maxValue = 0;
     
-    Object.keys(generatedNumbers).forEach((value) => {
-      if (generatedNumbers[value].value < minValue) {
-        minValue = generatedNumbers[value].value
-      }
-    })
+    if(whatIWant === "min") {
+      Object.keys(generatedNumbers).forEach((value) => {
+        if (generatedNumbers[value].value < minValue) {
+          minValue = generatedNumbers[value].value
+        }
+      })
+      this.setState({ minValue })
+    }
     
-    Object.keys(generatedNumbers).forEach((value) => {
-      if (maxValue < generatedNumbers[value].value) {
-        maxValue = generatedNumbers[value].value
-      }
-    })
-    
-    this.setState({ minValue, maxValue })
+    if(whatIWant === "max") {
+      Object.keys(generatedNumbers).forEach((value) => {
+        if (maxValue < generatedNumbers[value].value) {
+          maxValue = generatedNumbers[value].value
+        }
+      })
+  
+      this.setState({ maxValue })
+    }
+  }
+  
+  sort = (generatedNumbers,by) => {
+    if(by === "asc" || by ==="dsc") {
+      this.sortGeneratedNumbers(generatedNumbers, by)
+    }
   }
   
   render() {
@@ -117,7 +136,7 @@ class App extends Component {
         </Navbar>
         
         {/*<TableComponent list={this.state.generatedNumbers} />*/}
-        <div style={{ marginLeft: 300, height: 500, width: 1000, marginTop: 50, display: 'block',
+        <div style={{ marginLeft: 200, height: 500, width: 1000, marginTop: 40, display: 'block',
           overflow:'auto' }}>
           <Table className="table">
             <thead>
@@ -125,6 +144,8 @@ class App extends Component {
               <th data-field="id">S/N</th>
               <th data-field="name">Unique ID</th>
               <th data-field="price">Phone Numbers</th>
+              <th style={{ width: 150, marginLeft: 10 }} data-field="price">Min: {this.state.minValue}</th>
+              <th style={{ width: 150, marginLeft: 10 }} data-field="price">Max: {this.state.maxValue}</th>
             </tr>
             </thead>
             <tbody>
@@ -144,38 +165,29 @@ class App extends Component {
             </tbody>
           </Table>
         </div>
-        <div style={{ marginLeft: 300, marginTop: 50 }}>
-          <Row>
-            <Dropdown
-              onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
-              trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>
-              <NavItem
-                className="asc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>
-              <NavItem
-                className="dsc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>
-              <NavItem divider />
-              <Modal
-                header={`Minimum: ${this.state.minValue}`}
-                trigger={<NavItem className="min">Min</NavItem>}>
-              </Modal>
-              <Modal
-                header={`Maximum: ${this.state.maxValue}`}
-                trigger={<NavItem className="max">Max</NavItem>}>
-              </Modal>
-            </Dropdown>
-            
+        <div style={{ marginLeft: 300, marginBottom: 500 }}>
+          <Row style={{ marginBottom: 500 }}>
             <Input
               className="range"
-              s={2}
+              s={4}
               label="Enter Range 1 <= 5000"
               onChange={userRange => this.setState({ userRange: userRange.target.value.replace(/\D/g, '') })}
               value={this.state.userRange}
             />
+            <DropdownButton
+              id="dropdown" title="Filter by">
+              <MenuItem
+                onClick={() => this.sort(generatedNumbers,"asc")} id="sdf" className="asc" href="#books">Ascending</MenuItem>
+                {/*onClick={() => this.sortGeneratedNumbers(generatedNumbers, "asc")} id="sdf" className="asc" href="#books">Ascending</MenuItem>*/}
+              <MenuItem
+                onClick={() => this.sort(generatedNumbers,"dsc")} className="dsc" href="#podcasts">Descending</MenuItem>
+                {/*onClick={() => this.sortGeneratedNumbers(generatedNumbers, "dsc")} className="dsc" href="#podcasts">Descending</MenuItem>*/}
+              <MenuItem onClick={() => this.returnMaxAndMin(generatedNumbers, "min")} className="min" href="#">Minimum</MenuItem>
+              <MenuItem onClick={() => this.returnMaxAndMin(generatedNumbers, "max")} className="max" href="#">Maximum</MenuItem>
+            </DropdownButton>
             <Button
               className="generate"
-              style={{ marginTop: 20, marginLeft: 40 }}
+              style={{ marginTop: 0, marginLeft: 40 }}
               s={6}
               onClick={() => this.onGenerateButtonClick(this.state.userRange)}
               waves='light'>

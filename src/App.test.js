@@ -24,6 +24,47 @@ const mockData = [
 
 describe('App', () => {
   let wrapper;
+  
+  it('should call the sortGeneratedNumbers method', () => {
+    const wrapper = mount(<App />);
+    const sortGeneratedNumbersSpy = spy(wrapper.instance(), 'sortGeneratedNumbers');
+    wrapper.instance().sortGeneratedNumbers();
+    expect(sortGeneratedNumbersSpy.called).toEqual(true);
+  });
+  
+  it('should call the returnMaxAndMinSpy method', () => {
+    const wrapper = mount(<App />);
+    const returnMaxAndMinSpy = spy(wrapper.instance(), 'returnMaxAndMin');
+    const action = wrapper.find('MenuItem#sdf').simulate('click');
+    console.log(action)
+    // expect(action).toBeInstanceOf(Object);
+    // expect(returnMaxAndMinSpy.called).toEqual(true);
+  });
+  
+  it('should simulate asc click', () => {
+    const wrapper = mount(<App />);
+    const action = wrapper.find('MenuItem.asc').simulate('click');
+    expect(action).toBeInstanceOf(Object);
+    console.log(action)
+  });
+  
+  it('should simulate dsc click', () => {
+    const wrapper = mount(<App />);
+    const action = wrapper.find('MenuItem.dsc').simulate('click');
+    expect(action).toBeInstanceOf(Object);
+  });
+  
+  it('should simulate min click', () => {
+    const wrapper = mount(<App />);
+    const action = wrapper.find('MenuItem.min').simulate('click');
+    expect(action).toBeInstanceOf(Object);
+  });
+  
+  it('should simulate max click', () => {
+    const wrapper = mount(<App />);
+    const action = wrapper.find('MenuItem.max').simulate('click');
+    expect(action).toBeInstanceOf(Object);
+  });
 
   it('should call the onGenerateButtonClick method ', () => {
     const wrapper = mount(<App />);
@@ -69,6 +110,36 @@ describe('App', () => {
       "dsc"
     );
     expect(sortGeneratedNumbersSpy.called).toEqual(true);
+    wrapper.unmount()
+  });
+  
+  it('should call the returnMaxAndMin method using dsc ', () => {
+    const wrapper = mount(<App />);
+    const returnMaxAndMinSpy = spy(wrapper.instance(), 'returnMaxAndMin');
+    wrapper.instance().returnMaxAndMin(
+      [
+        { id: 1, value: "0911276029" },
+        { id: 2, value: "0780997650" },
+        { id: 3, value: "0141172042" },
+      ],
+      "min"
+    );
+    expect(returnMaxAndMinSpy.called).toEqual(true);
+    wrapper.unmount()
+  });
+  
+  it('should call the returnMaxAndMin method using dsc ', () => {
+    const wrapper = mount(<App />);
+    const returnMaxAndMinSpy = spy(wrapper.instance(), 'returnMaxAndMin');
+    wrapper.instance().returnMaxAndMin(
+      [
+        { id: 1, value: "0911276029" },
+        { id: 2, value: "0780997650" },
+        { id: 3, value: "0141172042" },
+      ],
+      "max"
+    );
+    expect(returnMaxAndMinSpy.called).toEqual(true);
     wrapper.unmount()
   });
   

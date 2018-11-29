@@ -22,7 +22,7 @@ describe('<App />', () => {
   
   it('renders three <Foo /> components', () => {
     const wrapper = mount(<App />);
-    expect(wrapper.find('div')).to.have.lengthOf(7);
+    expect(wrapper.find('div')).to.have.lengthOf(8);
   });
   
   it('allows us to set props', () => {
@@ -41,7 +41,7 @@ describe('<App />', () => {
   
   it('renders three `.foo-bar`s', () => {
     const wrapper = render(<App />);
-    expect(wrapper.find('div')).to.have.lengthOf(6);
+    expect(wrapper.find('div')).to.have.lengthOf(7);
   });
   
 });
