@@ -48,6 +48,14 @@ describe('App', () => {
     expect(sortGeneratedNumbersSpy.called).toEqual(true);
     wrapper.unmount();
   });
+  
+  it('should call the phoneNumberGenerator method using range of 10 ', () => {
+    const wrapper = mount(<App />);
+    const phoneNumberGeneratorSpy = spy(wrapper.instance(), 'phoneNumberGenerator');
+    wrapper.instance().phoneNumberGenerator(10);
+    expect(phoneNumberGeneratorSpy.called).toEqual(true);
+    wrapper.unmount();
+  });
 
   it('should call the sortGeneratedNumbers method using dsc ', () => {
     const wrapper = mount(<App />);
@@ -64,11 +72,10 @@ describe('App', () => {
     wrapper.unmount()
   });
   
-  // it('renders without crashing', () => {
-  //   const rendering = toJson(wrapper);
-  //   expect(rendering).toMatchSnapshot();
-  //   wrapper.unmount();
-  // });
+  it('renders without crashing', () => {
+    const rendering = toJson(wrapper);
+    expect(rendering).toMatchSnapshot();
+  });
   
   // it('should call the onClick method to sort by Highest', () => {
   //   const action = wrapper.find('NavItem.asc').simulate('click');

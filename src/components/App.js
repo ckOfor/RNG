@@ -52,10 +52,6 @@ class App extends Component {
     this.mounted = false;
   }
   
-  componentWillUnmount(){
-    this._mounted = false;
-  }
-  
   onGenerateButtonClick = (userRange) => {
     return userRange > 0 && userRange <= 5000 &&
       this.phoneNumberGenerator(userRange)

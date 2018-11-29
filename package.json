@@ -81,6 +81,7 @@
       "src/**/*.{js,jsx}",
       "!src/**/*.d.ts",
       "!src/serviceWorker.js",
+      "!src/setupTests.js",
       "!src/index.js",
       "!**/node_modules/**"
     ],
