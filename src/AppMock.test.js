@@ -2,7 +2,7 @@
 import React from 'react';
 
 // third-party libraries
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme'
 import toJson from 'enzyme-to-json';
 import { spy } from 'sinon';
 
@@ -14,26 +14,48 @@ const mock = require('mock-fs');
 describe('App', () => {
   let wrapper;
   
-  beforeEach(() => {
-    wrapper = mount(<App />);
-  });
-  
-  afterAll(() => {
-    mock.restore();
-    wrapper.unmount();
-    setTimeout(() => process.exit(), 10)
-  });
+  // beforeEach(() => {
+  //   wrapper = mount(<App />);
+  // });
+  //
+  // afterAll(() => {
+  //   mock.restore();
+  //   wrapper.unmount();
+  //   setTimeout(() => process.exit(), 10)
+  // });
   
   // afterAll(() => setTimeout(() => process.exit(), 10))
   
+  it('should call the writeToFile method ', () => {
+    const wrapper = mount(<App />);
+    const writeToFileSpy = spy(wrapper.instance(), 'writeToFile');
+    wrapper.instance().writeToFile([
+      { id: 1, value: "0911276029" },
+      { id: 2, value: "0780997650" },
+      { id: 3, value: "0141172042" },
+    ]);
+    expect(writeToFileSpy.called).toEqual(true);
+    wrapper.unmount();
+  });
+
+  it('should call the writeToFile method ', () => {
+    const wrapper = mount(<App />);
+    const writeToFileSpy = spy(wrapper.instance(), 'writeToFile');
+    wrapper.instance().writeToFile(-1);
+    expect(writeToFileSpy.called).toEqual(true);
+    wrapper.unmount();
+  });
+
   it('should call the onGenerateButtonClick method ', () => {
+    const wrapper = mount(<App />);
     const onGenerateButtonClickSpy = spy(wrapper.instance(), 'onGenerateButtonClick');
     wrapper.instance().onGenerateButtonClick(100);
     expect(onGenerateButtonClickSpy.called).toEqual(true);
     wrapper.unmount();
   });
-  
+
   it('should call the sortGeneratedNumbers method using asc ', () => {
+    const wrapper = mount(<App />);
     const sortGeneratedNumbersSpy = spy(wrapper.instance(), 'sortGeneratedNumbers');
     wrapper.instance().sortGeneratedNumbers(
       [
@@ -46,8 +68,9 @@ describe('App', () => {
     expect(sortGeneratedNumbersSpy.called).toEqual(true);
     wrapper.unmount();
   });
-  
+
   it('should call the sortGeneratedNumbers method using dsc ', () => {
+    const wrapper = mount(<App />);
     const sortGeneratedNumbersSpy = spy(wrapper.instance(), 'sortGeneratedNumbers');
     wrapper.instance().sortGeneratedNumbers(
       [
