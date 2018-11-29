@@ -15,6 +15,7 @@
     "browser-env": "^3.2.5",
     "browserify-fs": "^1.0.0",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
+    "chai": "^4.2.0",
     "chalk": "2.4.1",
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
@@ -36,6 +37,7 @@
     "jest-pnp-resolver": "1.0.1",
     "jest-resolve": "23.6.0",
     "mini-css-extract-plugin": "0.4.3",
+    "mock-fs": "^4.7.0",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -76,8 +78,11 @@
   ],
   "jest": {
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "src/**/*.{js,jsx}",
+      "!src/**/*.d.ts",
+      "!src/serviceWorker.js",
+      "!src/index.js",
+      "!**/node_modules/**"
     ],
     "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js",
     "resolver": "jest-pnp-resolver",

@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing <App /> functions renders without crashing 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Navbar
+      brand="RNG"
+      href="/"
+      options={Object {}}
+      right={true}
+    >
+      <nav>
+        <div
+          className="nav-wrapper"
+        >
+          <Col
+            s={12}
+          >
+            <div
+              className="col s12"
+            >
+              <a
+                className="brand-logo"
+                href="/"
+              >
+                RNG
+              </a>
+              <ul
+                className="right hide-on-med-and-down"
+              >
+                <NavItem>
+                  <li>
+                    <a
+                      href=""
+                    >
+                      Total : 
+                      0
+                    </a>
+                  </li>
+                </NavItem>
+              </ul>
+              <ul
+                className="side-nav"
+                id="nav-mobile"
+              >
+                <NavItem>
+                  <li>
+                    <a
+                      href=""
+                    >
+                      Total : 
+                      0
+                    </a>
+                  </li>
+                </NavItem>
+              </ul>
+              <a
+                className="button-collapse"
+                data-activates="nav-mobile"
+                href="#"
+              >
+                <Icon>
+                  <i
+                    className="material-icons"
+                  >
+                    view_headline
+                  </i>
+                </Icon>
+              </a>
+            </div>
+          </Col>
+        </div>
+      </nav>
+    </Navbar>
+    <TableComponent
+      list={Array []}
+    >
+      <div
+        style={
+          Object {
+            "display": "block",
+            "height": 500,
+            "marginLeft": 300,
+            "marginTop": 50,
+            "overflow": "auto",
+            "width": 1000,
+          }
+        }
+      >
+        <Table
+          style={Object {}}
+        >
+          <table
+            className=""
+            style={Object {}}
+          >
+            <thead>
+              <tr>
+                <th
+                  data-field="id"
+                >
+                  S/N
+                </th>
+                <th
+                  data-field="name"
+                >
+                  Unique ID
+                </th>
+                <th
+                  data-field="price"
+                >
+                  Phone Numbers
+                </th>
+              </tr>
+            </thead>
+            <tbody />
+          </table>
+        </Table>
+      </div>
+    </TableComponent>
+    <div
+      style={
+        Object {
+          "marginLeft": 300,
+          "marginTop": 50,
+        }
+      }
+    >
+      <Row>
+        <div
+          className="row"
+        >
+          <Input
+            checked={false}
+            label="Enter Range"
+            onChange={[Function]}
+            s={2}
+            type="text"
+            value=""
+          >
+            <div
+              className="col input-field s2"
+            >
+              <input
+                checked={false}
+                className=""
+                id="input_1"
+                onChange={[Function]}
+                type="text"
+                value=""
+              />
+              <label
+                className=""
+                htmlFor="input_1"
+              >
+                Enter Range
+              </label>
+            </div>
+          </Input>
+          <Button
+            className="generate"
+            node="button"
+            onClick={[Function]}
+            s={6}
+            style={
+              Object {
+                "marginLeft": 40,
+                "marginTop": 20,
+              }
+            }
+            waves="light"
+          >
+            <button
+              className="btn waves-effect waves-light generate"
+              disabled={false}
+              onClick={[Function]}
+              s={6}
+              style={
+                Object {
+                  "marginLeft": 40,
+                  "marginTop": 20,
+                }
+              }
+            >
+              GENERATE
+            </button>
+          </Button>
+          <Button
+            node="button"
+            onClick={[Function]}
+            s={6}
+            style={
+              Object {
+                "marginLeft": 40,
+                "marginTop": 20,
+              }
+            }
+            waves="light"
+          >
+            <button
+              className="btn waves-effect waves-light"
+              disabled={false}
+              onClick={[Function]}
+              s={6}
+              style={
+                Object {
+                  "marginLeft": 40,
+                  "marginTop": 20,
+                }
+              }
+            >
+              Download
+            </button>
+          </Button>
+        </div>
+      </Row>
+    </div>
+  </div>
+</App>
+`;
