@@ -22,14 +22,55 @@ const mockData = [
   },
 ];
 
+let event = {
+  target: {
+    name: 'numberToGenerate',
+    value: 1000,
+    selectedOptions: [
+      { innerHTML: 'selected name' },
+    ],
+  },
+  preventDefault: spy(),
+};
+
+
 describe('App', () => {
   let wrapper;
+  
+  it('should ensure ascending order is clicked', () => {
+    const wrapper = mount(<App />);
+    const action = wrapper.find('NavItem.asc').simulate('click');
+    expect(action).toBeInstanceOf(Object);
+    wrapper.unmount();
+  });
+  
+  it('should ensure descending order is clicked', () => {
+    const wrapper = mount(<App />);
+    const action = wrapper.find('NavItem.dsc').simulate('click');
+    expect(action).toBeInstanceOf(Object);
+    wrapper.unmount();
+  });
+  
+  it('should ensure dropdown is clicked', () => {
+    const wrapper = mount(<App />);
+    const action = wrapper.find('Dropdown.dropdown').simulate('click');
+    expect(action).toBeInstanceOf(Object);
+    wrapper.unmount();
+  });
 
-  it('should call the onGenerateButtonClick method ', () => {
+  it('should call the onGenerateButtonClick method', () => {
     const wrapper = mount(<App />);
     const onGenerateButtonClickSpy = spy(wrapper.instance(), 'onGenerateButtonClick');
     wrapper.instance().onGenerateButtonClick(100);
     expect(onGenerateButtonClickSpy.called).toEqual(true);
+    wrapper.unmount();
+  });
+  
+  it('should call the updateRange method ', () => {
+    const wrapper = mount(<App />);
+    const updateRangeSpy = spy(wrapper.instance(), 'updateRange');
+    wrapper.instance().updateRange(event);
+    expect(updateRangeSpy.called).toEqual(true);
     wrapper.unmount();
   });
 
