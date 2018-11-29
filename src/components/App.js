@@ -61,9 +61,7 @@ class App extends Component {
     
     this.setState({ generatedNumbers })
     const dataToWrite = JSON.stringify(generatedNumbers);
-    fs.writeFile('../../numbers.txt', dataToWrite, (err) => {
-      if (err) throw err;
-    });
+    fs.writeFile('../../numbers.txt', dataToWrite, () => {});
     
     this.returnMaxAndMin(generatedNumbers)
   }
