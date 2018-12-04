@@ -204,6 +204,7 @@
           </provider>
         </entry>
       </file>
+
     </leaf>
   </component>
   <component name="FindInProjectRecents">
@@ -265,6 +266,7 @@
         <option value="$PROJECT_DIR$/src/setupTests.js" />
         <option value="$PROJECT_DIR$/src/App1.test.js" />
         <option value="$PROJECT_DIR$/src/App2.test.js" />
+        <option value="$PROJECT_DIR$/src/App.test.js" />
         <option value="$PROJECT_DIR$/src/components/App.js" />
         <option value="$PROJECT_DIR$/src/App.test.js" />
       </list>
@@ -325,8 +327,7 @@
             <path>
               <item name="RNG" type="b2602c69:ProjectViewProjectNode" />
               <item name="RNG" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
