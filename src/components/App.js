@@ -36,15 +36,14 @@ class App extends Component {
   
   componentWillMount() {
     setTimeout(() => {
-      fs.readFile('../../numbers.txt', 'utf-8', (err, generatedNumbers) =>
-        // this.setState({generatedNumbers: JSON.parse(generatedNumbers) }))
-      this.setComponentState(JSON.parse(generatedNumbers)))
+      fs.readFile('../../numbers.txt', 'utf-8', (err, generatedNumbers) => !err
+        ? this.setComponentState(JSON.parse(generatedNumbers)) : null); // eslint-disable-line
       
     }, 200)
   }
   
   setComponentState = (generatedNumbers) => {
-    this.setState({generatedNumbers, tableList: generatedNumbers});
+    this.setState({generatedNumbers, tableList: generatedNumbers}, () => this.returnMaxAndMin(generatedNumbers));
   }
   
   componentWillUnmount(){
@@ -65,7 +64,7 @@ class App extends Component {
       generatedNumbers.push({ id: i + 1,  value: phoneNumbers });
     }
     
-    this.setState({ generatedNumbers })
+    this.setState({ generatedNumbers, tableList: generatedNumbers })
     const dataToWrite = JSON.stringify(generatedNumbers);
     fs.writeFile('../../numbers.txt', dataToWrite, () => {});
     
@@ -156,12 +155,11 @@ class App extends Component {
             </tbody>
           </Table>
         </div>
+        
         <div style={{ marginLeft: 300, marginTop: 50 }}>
           <Row>
             <Dropdown
               className="dropdown"
-              onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
-              // onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
               trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>
               <NavItem
                 className="asc"
