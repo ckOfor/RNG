@@ -9,7 +9,7 @@ import { spy, sinon } from 'sinon';
 // component
 import App from './components/App';
 
-// const mock = require('mock-fs');
+// const mock = requiare('mock-fs');
 
 import mock from 'mock-fs'
 
