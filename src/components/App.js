@@ -26,7 +26,8 @@ class App extends Component {
     minValue: '',
     maxValue: '',
     selected: '',
-    mounted: false
+    mounted: false,
+    tableList: []
   }
   
   componentDidMount(){
@@ -34,8 +35,16 @@ class App extends Component {
   }
   
   componentWillMount() {
-    fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err
-      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }) : null); // eslint-disable-line
+    setTimeout(() => {
+      fs.readFile('../../numbers.txt', 'utf-8', (err, generatedNumbers) =>
+        // this.setState({generatedNumbers: JSON.parse(generatedNumbers) }))
+      this.setComponentState(JSON.parse(generatedNumbers)))
+      
+    }, 200)
+  }
+  
+  setComponentState = (generatedNumbers) => {
+    this.setState({generatedNumbers, tableList: generatedNumbers});
   }
   
   componentWillUnmount(){
@@ -45,14 +54,14 @@ class App extends Component {
   onGenerateButtonClick = (userRange) => {
     return userRange > 0 && userRange <= 5000 ?
       this.phoneNumberGenerator(userRange)
-      : window.Materialize.toast('I am a toast!', 10000)
+      : window.Materialize.toast('You can only enter numbers between 0 - 5001', 10000)
   }
   
   phoneNumberGenerator = (userRange) => {
     let phoneNumbers, generatedNumbers = [];
     
     for ( let i = 0; i < userRange; i++) {
-      phoneNumbers = `0${Math.floor(Math.random() * 1111111111)}`
+      phoneNumbers = `0${Math.floor(Math.random() * 111111111)}`
       generatedNumbers.push({ id: i + 1,  value: phoneNumbers });
     }
     
@@ -110,7 +119,7 @@ class App extends Component {
   }
   
   render() {
-    let { generatedNumbers } = this.state
+    let { generatedNumbers, tableList } = this.state
     return (
       <div className="App">
         <Navbar brand='RNG' right>
@@ -133,12 +142,12 @@ class App extends Component {
             <tbody>
             {
               (
-                Object.keys(generatedNumbers).map((row, index) => {
+                Object.keys(tableList).map((row, index) => {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{generatedNumbers[row].id}</td>
-                      <td>{generatedNumbers[row].value}</td>
+                      <td>{tableList[row].id}</td>
+                      <td>{tableList[row].value}</td>
                     </tr>
                   )
                 })
@@ -152,13 +161,20 @@ class App extends Component {
             <Dropdown
               className="dropdown"
               onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
+              // onClick={ () => Object.keys(generatedNumbers).length > 1 && this.returnMaxAndMin(generatedNumbers)}
               trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>
               <NavItem
                 className="asc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>
+                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}
+              >
+                Ascending
+              </NavItem>
               <NavItem
                 className="dsc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>
+                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}
+              >
+                Descending
+              </NavItem>
               <NavItem divider />
               <Modal
                 header={`Minimum: ${this.state.minValue}`}
