@@ -13,8 +13,6 @@ import App from './components/App';
 
 import mock from 'mock-fs'
 
-
-
 let event = {
   target: {
     name: 'numberToGenerate',
