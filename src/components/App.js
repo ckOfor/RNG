@@ -26,12 +26,29 @@ class App extends Component {
     minValue: '',
     maxValue: '',
     selected: '',
-    mounted: false
+    mounted: false,
+    tableList: []
+  }
+  
+  componentDidMount(){
+    this.mounted = true;
   }
   
   componentWillMount() {
-    fs.readFile('../../data.txt', 'utf-8', (err, generatedNumbers) => !err
-      ? this.setState({generatedNumbers: JSON.parse(generatedNumbers) }) : null)
+    setTimeout(() => {
+      fs.readFile('../../numbers.txt', 'utf-8', (err, generatedNumbers) =>
+        // this.setState({generatedNumbers: JSON.parse(generatedNumbers) }))
+      this.setComponentState(JSON.parse(generatedNumbers)))
+      
+    }, 200)
+  }
+  
+  setComponentState = (generatedNumbers) => {
+    this.setState({generatedNumbers, tableList: generatedNumbers});
+  }
+  
+  componentWillUnmount(){
+    this.mounted = false;
   }
   
   onGenerateButtonClick = (userRange) => {
@@ -44,7 +61,7 @@ class App extends Component {
     let phoneNumbers, generatedNumbers = [];
     
     for ( let i = 0; i < userRange; i++) {
-      phoneNumbers = `0${Math.floor(Math.random() * 1111111111)}`
+      phoneNumbers = `0${Math.floor(Math.random() * 111111111)}`
       generatedNumbers.push({ id: i + 1,  value: phoneNumbers });
     }
     
@@ -102,7 +119,7 @@ class App extends Component {
   }
   
   render() {
-    let { generatedNumbers } = this.state
+    let { generatedNumbers, tableList } = this.state
     return (
       <div className="App">
         <Navbar brand='RNG' right>
@@ -125,12 +142,12 @@ class App extends Component {
             <tbody>
             {
               (
-                Object.keys(generatedNumbers).map((row, index) => {
+                Object.keys(tableList).map((row, index) => {
                   return (
                     <tr key={index}>
                       <td>{index + 1}</td>
-                      <td>{generatedNumbers[row].id}</td>
-                      <td>{generatedNumbers[row].value}</td>
+                      <td>{tableList[row].id}</td>
+                      <td>{tableList[row].value}</td>
                     </tr>
                   )
                 })
@@ -148,10 +165,16 @@ class App extends Component {
               trigger={<Button style={{ marginTop: 20, marginLeft: 40  }}>Filter by:</Button>}>
               <NavItem
                 className="asc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}>Ascending</NavItem>
+                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "asc")}
+              >
+                Ascending
+              </NavItem>
               <NavItem
                 className="dsc"
-                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}>Descending</NavItem>
+                onClick={() => this.sortGeneratedNumbers(this.state.generatedNumbers, "dsc")}
+              >
+                Descending
+              </NavItem>
               <NavItem divider />
               <Modal
                 header={`Minimum: ${this.state.minValue}`}

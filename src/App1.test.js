@@ -2,8 +2,8 @@
 import React from 'react';
 
 // third-party
-import {  mount } from 'enzyme';
-import { spy } from 'sinon';
+import { mount, shallow } from 'enzyme'
+import { spy, sinon } from 'sinon';
 
 // component
 import App from './components/App';

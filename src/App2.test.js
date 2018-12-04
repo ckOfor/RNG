@@ -37,15 +37,21 @@ describe('<App />', () => {
     expect(wrapper.props().bar).to.equal('foo');
   });
   
-  // it('calls componentDWillMount', () => {
-  //   spy(App.prototype, 'componentDidMount');
-  //   const wrapper = mount(<App />);
-  //   expect(App.prototype.componentDidMount).to.have.property('callCount', 1);
-  //   App.prototype.componentDidMount.restore();
-  // });
+  it('calls componentWillMount', () => {
+    spy(App.prototype, 'componentDidMount');
+    const wrapper = mount(<App />);
+    expect(App.prototype.componentDidMount).to.have.property('callCount', 1);
+    App.prototype.componentDidMount.restore();
+  });
+  
+  it('calls componentWillMount', () => {
+    spy(App.prototype, 'componentWillMount');
+    const wrapper = mount(<App />);
+    expect(App.prototype.componentWillMount).to.have.property('callCount', 1);
+    App.prototype.componentWillMount.restore();
+  });
   
   it('renders three `.foo-bar`s', () => {
-    // const wrapper = render(<App />);
     const wrapper = mount(<App bar="baz" />);
     expect(wrapper.find('div')).to.have.lengthOf(15);
   });

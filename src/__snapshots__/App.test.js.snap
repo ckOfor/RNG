@@ -1,3 +1,475 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App renders without crashing 1`] = `undefined`;
+exports[`App renders without crashing 1`] = `
+<App>
+  <div
+    className="App"
+  >
+    <Navbar
+      brand="RNG"
+      href="/"
+      options={Object {}}
+      right={true}
+    >
+      <nav>
+        <div
+          className="nav-wrapper"
+        >
+          <Col
+            s={12}
+          >
+            <div
+              className="col s12"
+            >
+              <a
+                className="brand-logo"
+                href="/"
+              >
+                RNG
+              </a>
+              <ul
+                className="right hide-on-med-and-down"
+              >
+                <NavItem>
+                  <li>
+                    <a
+                      href=""
+                    >
+                      Total : 
+                      0
+                    </a>
+                  </li>
+                </NavItem>
+              </ul>
+              <ul
+                className="side-nav"
+                id="nav-mobile"
+              >
+                <NavItem>
+                  <li>
+                    <a
+                      href=""
+                    >
+                      Total : 
+                      0
+                    </a>
+                  </li>
+                </NavItem>
+              </ul>
+              <a
+                className="button-collapse"
+                data-activates="nav-mobile"
+                href="#"
+              >
+                <Icon>
+                  <i
+                    className="material-icons"
+                  >
+                    view_headline
+                  </i>
+                </Icon>
+              </a>
+            </div>
+          </Col>
+        </div>
+      </nav>
+    </Navbar>
+    <div
+      style={
+        Object {
+          "display": "block",
+          "height": 500,
+          "marginLeft": 300,
+          "marginTop": 50,
+          "overflow": "auto",
+          "width": 1000,
+        }
+      }
+    >
+      <Table
+        className="table"
+      >
+        <table
+          className="table"
+        >
+          <thead>
+            <tr>
+              <th
+                data-field="id"
+              >
+                S/N
+              </th>
+              <th
+                data-field="name"
+              >
+                Unique ID
+              </th>
+              <th
+                data-field="price"
+              >
+                Phone Numbers
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+      </Table>
+    </div>
+    <div
+      style={
+        Object {
+          "marginLeft": 300,
+          "marginTop": 50,
+        }
+      }
+    >
+      <Row>
+        <div
+          className="row"
+        >
+          <Dropdown
+            className="dropdown"
+            onClick={[Function]}
+            trigger={
+              <Button
+                node="button"
+                style={
+                  Object {
+                    "marginLeft": 40,
+                    "marginTop": 20,
+                  }
+                }
+              >
+                Filter by:
+              </Button>
+            }
+          >
+            <span>
+              <Button
+                className="dropdown-button"
+                data-activates="dropdown_64"
+                node="button"
+                style={
+                  Object {
+                    "marginLeft": 40,
+                    "marginTop": 20,
+                  }
+                }
+              >
+                <button
+                  className="btn dropdown-button"
+                  data-activates="dropdown_64"
+                  disabled={false}
+                  style={
+                    Object {
+                      "marginLeft": 40,
+                      "marginTop": 20,
+                    }
+                  }
+                >
+                  Filter by:
+                </button>
+              </Button>
+              <ul
+                className="dropdown-content dropdown"
+                id="dropdown_64"
+                onClick={[Function]}
+              >
+                <NavItem
+                  className="asc"
+                  onClick={[Function]}
+                >
+                  <li
+                    className="asc"
+                  >
+                    <a
+                      onClick={[Function]}
+                    >
+                      Ascending
+                    </a>
+                  </li>
+                </NavItem>
+                <NavItem
+                  className="dsc"
+                  onClick={[Function]}
+                >
+                  <li
+                    className="dsc"
+                  >
+                    <a
+                      onClick={[Function]}
+                    >
+                      Descending
+                    </a>
+                  </li>
+                </NavItem>
+                <NavItem
+                  divider={true}
+                >
+                  <li
+                    className="divider"
+                  />
+                </NavItem>
+                <Modal
+                  actions={
+                    Array [
+                      <Button
+                        flat={true}
+                        modal="close"
+                        node="button"
+                        waves="light"
+                      >
+                        Close
+                      </Button>,
+                    ]
+                  }
+                  bottomSheet={false}
+                  fixedFooter={false}
+                  header="Minimum: "
+                  modalOptions={Object {}}
+                  trigger={
+                    <NavItem
+                      className="min"
+                    >
+                      Min
+                    </NavItem>
+                  }
+                >
+                  <div>
+                    <NavItem
+                      className="min"
+                      onClick={[Function]}
+                    >
+                      <li
+                        className="min"
+                      >
+                        <a
+                          onClick={[Function]}
+                        >
+                          Min
+                        </a>
+                      </li>
+                    </NavItem>
+                    <Portal
+                      containerInfo={
+                        <div>
+                          <div
+                            class="modal"
+                            id="modal_65"
+                          >
+                            <div
+                              class="modal-content"
+                            >
+                              <h4>
+                                Minimum: 
+                              </h4>
+                            </div>
+                            <div
+                              class="modal-footer"
+                            >
+                              <button
+                                class="btn waves-effect waves-light btn-flat modal-action modal-close"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    >
+                      <div
+                        className="modal"
+                        id="modal_65"
+                      >
+                        <div
+                          className="modal-content"
+                        >
+                          <h4>
+                            Minimum: 
+                          </h4>
+                        </div>
+                        <div
+                          className="modal-footer"
+                        >
+                          <Button
+                            flat={true}
+                            key=".0"
+                            modal="close"
+                            node="button"
+                            waves="light"
+                          >
+                            <button
+                              className="btn waves-effect waves-light btn-flat modal-action modal-close"
+                              disabled={false}
+                            >
+                              Close
+                            </button>
+                          </Button>
+                        </div>
+                      </div>
+                    </Portal>
+                  </div>
+                </Modal>
+                <Modal
+                  actions={
+                    Array [
+                      <Button
+                        flat={true}
+                        modal="close"
+                        node="button"
+                        waves="light"
+                      >
+                        Close
+                      </Button>,
+                    ]
+                  }
+                  bottomSheet={false}
+                  fixedFooter={false}
+                  header="Maximum: "
+                  modalOptions={Object {}}
+                  trigger={
+                    <NavItem
+                      className="max"
+                    >
+                      Max
+                    </NavItem>
+                  }
+                >
+                  <div>
+                    <NavItem
+                      className="max"
+                      onClick={[Function]}
+                    >
+                      <li
+                        className="max"
+                      >
+                        <a
+                          onClick={[Function]}
+                        >
+                          Max
+                        </a>
+                      </li>
+                    </NavItem>
+                    <Portal
+                      containerInfo={
+                        <div>
+                          <div
+                            class="modal"
+                            id="modal_66"
+                          >
+                            <div
+                              class="modal-content"
+                            >
+                              <h4>
+                                Maximum: 
+                              </h4>
+                            </div>
+                            <div
+                              class="modal-footer"
+                            >
+                              <button
+                                class="btn waves-effect waves-light btn-flat modal-action modal-close"
+                              >
+                                Close
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      }
+                    >
+                      <div
+                        className="modal"
+                        id="modal_66"
+                      >
+                        <div
+                          className="modal-content"
+                        >
+                          <h4>
+                            Maximum: 
+                          </h4>
+                        </div>
+                        <div
+                          className="modal-footer"
+                        >
+                          <Button
+                            flat={true}
+                            key=".0"
+                            modal="close"
+                            node="button"
+                            waves="light"
+                          >
+                            <button
+                              className="btn waves-effect waves-light btn-flat modal-action modal-close"
+                              disabled={false}
+                            >
+                              Close
+                            </button>
+                          </Button>
+                        </div>
+                      </div>
+                    </Portal>
+                  </div>
+                </Modal>
+              </ul>
+            </span>
+          </Dropdown>
+          <Input
+            checked={false}
+            className="range"
+            label="Enter Range 1 <= 5000"
+            onChange={[Function]}
+            s={2}
+            type="text"
+          >
+            <div
+              className="col input-field s2"
+            >
+              <input
+                checked={false}
+                className="range"
+                id="input_67"
+                onChange={[Function]}
+                type="text"
+              />
+              <label
+                className=""
+                htmlFor="input_67"
+              >
+                Enter Range 1 &lt;= 5000
+              </label>
+            </div>
+          </Input>
+          <Button
+            className="generate"
+            node="button"
+            onClick={[Function]}
+            s={6}
+            style={
+              Object {
+                "marginLeft": 40,
+                "marginTop": 20,
+              }
+            }
+            waves="light"
+          >
+            <button
+              className="btn waves-effect waves-light generate"
+              disabled={false}
+              onClick={[Function]}
+              s={6}
+              style={
+                Object {
+                  "marginLeft": 40,
+                  "marginTop": 20,
+                }
+              }
+            >
+              GENERATE
+            </button>
+          </Button>
+        </div>
+      </Row>
+    </div>
+  </div>
+</App>
+`;
