@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/ckOfor/RNG.svg?branch=dev)](https://travis-ci.org/ckOfor/RNG)
-[![Coverage Status](https://coveralls.io/repos/github/ckOfor/RNG/badge.svg?branch=master)](https://coveralls.io/github/ckOfor/RNG?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/ckOfor/RNG/badge.svg?branch=dev)](https://coveralls.io/github/ckOfor/RNG?branch=dev)
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
