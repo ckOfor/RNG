@@ -156,6 +156,7 @@ class App extends Component {
             </tbody>
           </Table>
         </div>
+        
         <div style={{ marginLeft: 300, marginTop: 50 }}>
           <Row>
             <Dropdown
